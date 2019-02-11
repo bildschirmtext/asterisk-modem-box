@@ -14,6 +14,15 @@ Run `vagrant up` to create the box and configure Asterisk. On a 2018 MacBook Pro
 
 When Vagrant creates the virtual machine, a bridged network interface is configured. Depending on the configuration of the host system, Vagrant might ask for the host interface that should be used for the bridge. Make sure to pick the network that your SIP ATA is connected to, so it can reach the Asterisk server.
 
+# Configuring your ATA
+
+Simply configure the Asterisk server as a new SIP server, using the IP address of the VM, the extension `6001` as the username, and the password `unsecurepassword`.
+
+Here's how that looks like in a Fritz!Box:
+![Fritz!Box Configuration Screen](docs/fritzbox-config.png)
+
+if you'd like to test the Asterisk config with a regular phone, you can dial `100` to hear the "Hello, world!" announcement.
+
 # Further Reading
 
 See [github.com/bildschirmtext](https://github.com/bildschirmtext/) for more software to make Bildschirmtext available again.
