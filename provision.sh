@@ -11,7 +11,9 @@ if [ ! -e /var/tmp/apt-update-done ]; then
 	echo 'DPkg::options { "--force-confdef"; };' >>/etc/apt/apt.conf.d/70debconf
 	apt update
 	apt install -y netselect-apt
-	netselect-apt -so /etc/apt/sources.list
+	netselect-apt -so /etc/apt/sources.list stretch
+	# enable security repo
+	sed -e 's/stable/stretch/g' -e '/^# deb/s/^# //' -i /etc/apt/sources.list
 	apt update
 	apt upgrade -y
 	touch /var/tmp/apt-update-done
@@ -21,7 +23,7 @@ if [ ! -e "/var/tmp/${ASTERISK}.tar.gz" ]; then
 	echo "*** Downloading Asterisk 13 source"
 	wget --no-verbose \
 		-O /var/tmp/${ASTERISK}.tar.gz \
-	https://downloads.asterisk.org/pub/telephony/asterisk/${ASTERISK}.tar.gz ||
+	https://downloads.asterisk.org/pub/telephony/asterisk/${ASTERISK}.tar.gz || \
 	wget --no-verbose \
 		-O /var/tmp/${ASTERISK}.tar.gz \
 	https://downloads.asterisk.org/pub/telephony/asterisk/old-releases/${ASTERISK}.tar.gz
