@@ -10,10 +10,11 @@ if [ ! -e /var/tmp/apt-update-done ]; then
 	echo "*** Updating packages"
 	echo 'DPkg::options { "--force-confdef"; };' >>/etc/apt/apt.conf.d/70debconf
 	apt update
-	apt install -y netselect-apt
-	netselect-apt -so /etc/apt/sources.list stretch
-	# enable security repo
-	sed -e 's/stable/stretch/g' -e '/^# deb/s/^# //' -i /etc/apt/sources.list
+ 	#for outdated stretch it makes no sense any more to use netselect
+  	#there is no choice: we have to use archive.debian.org
+	echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
+	echo "deb http://archive.debian.org/debian-security stretch/updates main" >> /etc/apt/sources.list
+ 
 	apt update
 	apt upgrade -y
 	touch /var/tmp/apt-update-done
