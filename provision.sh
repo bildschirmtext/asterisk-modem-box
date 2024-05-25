@@ -155,7 +155,7 @@ same = n,Playback(hello-world)
 same = n,Hangup()
 
 exten = 01910,1,Answer()
-same = n,Softmodem(btx.hanse.de,20000,v(V23)ld(8)s(1))
+same = n,Softmodem(195.201.94.166,20000,v(V23)ld(8)s(1))
 same = n,Hangup()
 EOF
 
