@@ -140,6 +140,7 @@ load=res_pjsip_registrar
 load=res_pjsip_sdp_rtp
 load=res_pjsip_session
 load=res_rtp_asterisk
+load=res_rtp_multicast
 load=res_sorcery_astdb
 load=res_sorcery_config
 load=res_sorcery_memory
